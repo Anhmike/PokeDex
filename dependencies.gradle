@@ -14,6 +14,7 @@ ext {
     okhttpVersion = '4.2.0'
     fragmentVersion = '1.1.0'
     roomVersion = '2.1.0'
+    pagingVersion = '2.1.0'
 
     // Test dependencies
     junitVersion = '4.12'

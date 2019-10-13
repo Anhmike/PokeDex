@@ -5,4 +5,7 @@ data class PokemonResponse(
     val next: String? = null,
     val previous: String? = null,
     val results: List<Pokemon>? = null
-)
+) {
+    val nextKey: Int?
+        get() = null
+}

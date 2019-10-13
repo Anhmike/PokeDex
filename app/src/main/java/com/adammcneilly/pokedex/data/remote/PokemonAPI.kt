@@ -10,10 +10,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PokemonAPI {
     @GET("v2/pokemon")
-    fun getPokemonAsync(): Deferred<PokemonResponse>
+    fun getPokemonAsync(@Query("offset") offset: Int = 0): Deferred<PokemonResponse>
 
     @GET("v2/pokemon/{name}")
     fun getPokemonDetailAsync(@Path("name") name: String): Deferred<Pokemon>
