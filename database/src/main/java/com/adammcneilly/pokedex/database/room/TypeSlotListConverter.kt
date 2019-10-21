@@ -1,6 +1,7 @@
-package com.adammcneilly.pokedex.database
+package com.adammcneilly.pokedex.database.room
 
 import androidx.room.TypeConverter
+import com.adammcneilly.pokedex.database.models.TypeSlot
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

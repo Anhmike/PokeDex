@@ -1,4 +1,4 @@
-package com.adammcneilly.pokedex.database
+package com.adammcneilly.pokedex.database.models
 
 import androidx.room.Embedded
 import androidx.room.Entity

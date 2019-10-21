@@ -1,11 +1,12 @@
-package com.adammcneilly.pokedex.database
+package com.adammcneilly.pokedex.database.room
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.adammcneilly.pokedex.database.models.Pokemon
 
 @Dao
-interface PokemonDAO {
+interface RoomPokemonDAO {
     @Insert
     suspend fun insert(pokemon: Pokemon): Long
 

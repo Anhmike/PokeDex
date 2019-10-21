@@ -1,4 +1,4 @@
-package com.adammcneilly.pokedex.database
+package com.adammcneilly.pokedex.database.models
 
 data class Type(
     val name: String? = null,

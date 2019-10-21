@@ -1,29 +1,17 @@
 package com.adammcneilly.pokedex.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import com.adammcneilly.pokedex.database.models.Pokemon
+import com.adammcneilly.pokedex.database.room.RoomPokedexDatabase
 
-@Database(entities = [(Pokemon::class)], version = 1)
-@TypeConverters((TypeSlotListConverter::class))
-abstract class PokedexDatabase : RoomDatabase() {
-    abstract fun pokemonDao(): PokemonDAO
+class PokedexDatabase(context: Context) {
+    private val roomDatabase = RoomPokedexDatabase.getInMemoryDatabase(context)
 
-    companion object {
-        private var INSTANCE: PokedexDatabase? = null
+    suspend fun insertPokemon(pokemon: Pokemon): Long {
+        return roomDatabase.pokemonDao().insert(pokemon)
+    }
 
-        fun getInMemoryDatabase(context: Context): PokedexDatabase {
-            if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(
-                    context,
-                    PokedexDatabase::class.java, "pokedex.db"
-                )
-                    .build()
-            }
-
-            return INSTANCE!!
-        }
+    suspend fun getPokemonByName(name: String): Pokemon? {
+        return roomDatabase.pokemonDao().getPokemonByName(name)
     }
 }
