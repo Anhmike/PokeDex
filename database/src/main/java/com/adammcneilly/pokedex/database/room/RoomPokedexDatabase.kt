@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.adammcneilly.pokedex.database.models.Pokemon
+import com.adammcneilly.pokedex.database.models.PokemonDTO
 
-@Database(entities = [(Pokemon::class)], version = 1)
+@Database(entities = [(PokemonDTO::class)], version = 1)
 @TypeConverters((TypeSlotListConverter::class))
 abstract class RoomPokedexDatabase : RoomDatabase() {
     abstract fun pokemonDao(): RoomPokemonDAO

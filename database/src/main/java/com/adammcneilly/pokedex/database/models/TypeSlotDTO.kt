@@ -1,6 +1,6 @@
 package com.adammcneilly.pokedex.database.models
 
-data class TypeSlot(
+data class TypeSlotDTO(
     val slot: Int? = null,
-    val type: Type? = null
+    val type: TypeDTO? = null
 )

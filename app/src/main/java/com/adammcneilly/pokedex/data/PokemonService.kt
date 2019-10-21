@@ -1,7 +1,7 @@
 package com.adammcneilly.pokedex.data
 
-import com.adammcneilly.pokedex.data.local.PokedexDatabase
 import com.adammcneilly.pokedex.data.remote.PokemonAPI
+import com.adammcneilly.pokedex.database.PokedexDatabase
 import com.adammcneilly.pokedex.models.Pokemon
 import com.adammcneilly.pokedex.models.PokemonResponse
 
@@ -21,12 +21,13 @@ open class PokemonService(
     }
 
     private suspend fun getPokemonDetailFromDatabase(pokemonName: String): Pokemon? {
-        return database.pokemonDao().getPokemonByName(pokemonName)
+        val dto = database.getPokemonByName(pokemonName)
+        return Pokemon.fromPokemonDTO(dto)
     }
 
     private suspend fun getPokemonDetailFromNetwork(pokemonName: String): Pokemon {
         return api.getPokemonDetailAsync(pokemonName).await().also {
-            database.pokemonDao().insert(it)
+            database.insertPokemon(it.toPokemonDTO())
         }
     }
 }

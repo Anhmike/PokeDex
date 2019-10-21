@@ -1,6 +1,7 @@
 package com.adammcneilly.pokedex.models
 
 import com.adammcneilly.pokedex.R
+import com.adammcneilly.pokedex.database.models.TypeDTO
 
 data class Type(
     val name: String? = null,
@@ -35,6 +36,24 @@ data class Type(
         return when (name) {
             "steel" -> R.color.mds_black
             else -> R.color.mds_white
+        }
+    }
+
+    fun toTypeDTO(): TypeDTO {
+        return TypeDTO(
+            name = this.name,
+            url = this.url
+        )
+    }
+
+    companion object {
+        fun fromTypeDTO(dto: TypeDTO?): Type? {
+            return dto?.let {
+                Type(
+                    name = dto.name,
+                    url = dto.url
+                )
+            }
         }
     }
 }

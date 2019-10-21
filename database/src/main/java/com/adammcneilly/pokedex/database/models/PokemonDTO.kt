@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Pokemon(
+data class PokemonDTO(
     @PrimaryKey val name: String = "",
-    @Embedded val sprites: Sprites? = null,
+    @Embedded val sprites: SpritesDTO? = null,
     val url: String? = null,
-    val types: List<TypeSlot>? = null
+    val types: List<TypeSlotDTO>? = null
 )

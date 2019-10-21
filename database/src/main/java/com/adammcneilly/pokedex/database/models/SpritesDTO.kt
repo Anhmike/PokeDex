@@ -1,5 +1,5 @@
 package com.adammcneilly.pokedex.database.models
 
-data class Sprites(
+data class SpritesDTO(
     val frontDefault: String? = null
 )
